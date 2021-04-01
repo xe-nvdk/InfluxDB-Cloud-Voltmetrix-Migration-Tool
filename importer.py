@@ -3,6 +3,7 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 from values import *
 import csv
 import os
+import re
 
 print("###################################################################################################")
 print("############################# Welcome to InfluxDB Cloud importer tool #############################")
@@ -10,16 +11,14 @@ print("#########################################################################
 
 print("I'm going to help you to migrate your current data from a InfluxDB 2.x instance to InfluxDB Cloud\n")
 
-CONT = "y"
-while CONT == "y":
+def data():
 
     client = InfluxDBClient(url=src_instance, token=src_token, org=src_org)
 
     bucket = src_bucket
 
-    write_api = client.write_api(write_options=SYNCHRONOUS)
     query_api = client.query_api()
-    
+
     csv_result = query_api.query_csv(f'from(bucket:"{bucket}") |> range(start: {src_time})')
 
     writer = csv.writer(open("exported.csv", 'w'))
@@ -40,11 +39,5 @@ while CONT == "y":
         os.system(f"influx write --host {dst_instance} --org {dst_org} --token {dst_token} --bucket {dst_bucket} --file exported.csv")
         print("It's done, go to your instance in Cloud, log in, and explore the bucket, you should the see the information there.")
 
-    elif upload == "n":
+    else:
         print("\nOk, Bye Bye")
-        break
-
-    CONT = str(input("\nDo you want to export and transfer another bucket? [y/n]: "))
-    if CONT == "n":
-        print("\nOk, Bye Bye")
-        break
