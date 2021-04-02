@@ -1,10 +1,6 @@
 from values import src_instance, src_org, src_token, dst_instance, dst_token, dst_org
 import os
 
-print("###############################################################################")
-print("#################### Let's export some resources ##############################")
-print("###############################################################################\n")
-
 def stack():
     print("I'm exporting your resources...")
     os.system(f"influx export all --host {src_instance} --org {src_org} --token {src_token} --file exported.yml")
