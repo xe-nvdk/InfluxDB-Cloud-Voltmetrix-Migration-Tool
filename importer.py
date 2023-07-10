@@ -25,6 +25,6 @@ def data():
     if upload == "y" and "Y":
         print(f"Uploading the data, this can take some time depending of the size of your file: {tomb:.2f} MB")
         os.system(f"influx write --host {dst_instance} --org {dst_org} --token {dst_token} --bucket {dst_bucket} --format csv --file exported.csv")
-        print("It's done, go to your instance in Cloud, log in, and explore the bucket, you should the see the information there.")
+        print(f"It's done, go to your instance {dst_instance}, log in, and explore the bucket, you should the see the information there.")
     else:
         print("\nOk, Bye Bye")
