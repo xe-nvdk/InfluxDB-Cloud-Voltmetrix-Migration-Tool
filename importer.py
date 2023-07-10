@@ -1,5 +1,5 @@
 from influxdb_client import InfluxDBClient
-from values import *
+from values import src_bucket, src_instance, src_org, src_time, src_token, dst_instance, dst_bucket, dst_org, dst_token
 import csv
 import os
 import re
@@ -19,8 +19,7 @@ def data():
 
     size_bucket = os.path.getsize('exported.csv')
     tomb = (size_bucket / 1048576)
-    cost = (tomb * 0.002)
-    print("If you're a PAYG user this write is going to cost you $",cost)
+    print("The size of the file is:", tomb, "MB")
 
     upload = input(str("Do you want to continue: y/n: "))
     if upload == "y" and "Y":

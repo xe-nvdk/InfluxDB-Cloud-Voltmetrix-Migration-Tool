@@ -6,6 +6,6 @@ def stack():
     os.system(f"influx export all --host {src_instance} --org {src_org} --token {src_token} --file exported.yml")
     print("It's done\n")
 
-    print("Now, I'm importing this to your InfluxDB Cloud instance. You need to confirm...")
+    print("Now, I'm importing this to your InfluxDB hosted by Voltmetrix instance. You need to confirm...")
     os.system(f"influx apply --host {dst_instance} --org {dst_org} --token {dst_token} --file exported.yml")
     print("\nYou're ready to roll")

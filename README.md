@@ -1,2 +1,2 @@
-# InfluxDB Cloud data importer tool
-This Python script allows you to export your data from a InfluxDB OSS 2.x instance and send it to InfluxDB Cloud Instance.
+# InfluxDB Cloud > Voltmetrix Migration Tool
+This Python script allows you to export your export your dashboards, tasks, buckets, and telegraf configurations from InfluxDB Cloud to InfluxDB hosted on Voltmetrix.
